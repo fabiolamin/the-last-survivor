@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class EnemySpawn : MonoBehaviour
 {
+    private float timerAux;
+    [SerializeField]
+    private float spawnInterval = 1f;
     [SerializeField]
     private GameObject enemy;
     [SerializeField]
-    private float spawnInterval = 1f;
-    private float timerAux;
-
+    
     private void Awake()
     {
         timerAux = spawnInterval;
