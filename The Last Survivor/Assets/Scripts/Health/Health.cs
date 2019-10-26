@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Health
+public class Health : MonoBehaviour
 {
     [SerializeField]
     private int healthValue = 100;
@@ -14,7 +14,7 @@ public class Health
         }
     }
 
-    void ChangeHealth(int amount)
+    public void ChangeHealth(int amount)
     {
         healthValue += amount;
     }
