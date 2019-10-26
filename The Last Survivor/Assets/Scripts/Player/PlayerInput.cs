@@ -2,7 +2,7 @@
 
 public class PlayerInput : MonoBehaviour
 {
-    public Vector3 GetWASDKeys()
+    public Vector3 GetHorizontalAndVerticalKeys()
     {
         if (Input.GetKey(KeyCode.W))
         {
@@ -25,10 +25,5 @@ public class PlayerInput : MonoBehaviour
         }
 
         return Vector3.zero;
-    }
-
-    public float GetMouseX()
-    {
-        return Input.GetAxis("Mouse X");
     }
 }

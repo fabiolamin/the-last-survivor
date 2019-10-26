@@ -24,13 +24,13 @@ public class PlayerMovement : MonoBehaviour
     public void Move()
     {
         Vector3 move = Vector3.zero;
-        move += playerInput.GetWASDKeys();
+        move += playerInput.GetHorizontalAndVerticalKeys();
         transform.position += move * Time.deltaTime * speedMovement;
     }
 
     public void Rotate()
     {
-        float horizontal = playerInput.GetMouseX();
+        float horizontal = Input.GetAxis("Mouse X");
         Vector3 rotation = new Vector3(0, horizontal, 0) * speedRotation;
         transform.Rotate(rotation);
     }
