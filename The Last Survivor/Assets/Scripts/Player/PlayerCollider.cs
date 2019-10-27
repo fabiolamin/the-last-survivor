@@ -15,9 +15,9 @@ public class PlayerCollider : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Enemy"))
         {
-            playerHealth.ChangeHealth(-10);
+            playerHealth.Change(-10);
             {
-                if (playerHealth.HealthValue <= 0)
+                if (playerHealth.Value <= 0)
                 {
                     Destroy(gameObject);
                 }

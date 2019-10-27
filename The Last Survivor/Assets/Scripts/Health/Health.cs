@@ -3,19 +3,19 @@
 public class Health : MonoBehaviour
 {
     [SerializeField]
-    private int healthValue = 100;
-    public int HealthValue
+    private int value = 100;
+    public int Value
     {
-        get { return healthValue; }
+        get { return value; }
 
         set
         {
-            healthValue = value;
+            this.value = value;
         }
     }
 
-    public void ChangeHealth(int amount)
+    public void Change(int amount)
     {
-        healthValue += amount;
+        value += amount;
     }
 }

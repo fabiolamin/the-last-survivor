@@ -14,8 +14,8 @@ public class EnemyCollider : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Bullet"))
         {
-            enemyHealth.ChangeHealth(-10);
-            if(enemyHealth.HealthValue <= 0)
+            enemyHealth.Change(-10);
+            if(enemyHealth.Value <= 0)
             {
                 Destroy(gameObject);
             }
