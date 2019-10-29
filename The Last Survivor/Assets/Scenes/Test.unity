@@ -224,6 +224,7 @@ GameObject:
   - component: {fileID: 634236106}
   - component: {fileID: 634236105}
   - component: {fileID: 634236104}
+  - component: {fileID: 634236108}
   - component: {fileID: 634236103}
   m_Layer: 0
   m_Name: Bullet
@@ -321,6 +322,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &634236108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 634236102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dc1293986af7db489eaf4f2861c51c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  value: 10
 --- !u!1 &790533383
 GameObject:
   m_ObjectHideFlags: 0
@@ -353,7 +367,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b0e0ceab3188724aba7018a355d01bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnInterval: 5
+  spawnInterval: 3
   enemy: {fileID: 2544495602095865916, guid: 06ffaf97cf60cf5419aac9659f41b705, type: 3}
 --- !u!135 &790533385
 SphereCollider:
