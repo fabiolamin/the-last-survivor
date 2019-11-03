@@ -8,15 +8,11 @@ public class RoundManager : MonoBehaviour
     [SerializeField]
     Health playerHealth;
     [SerializeField]
-    Health enemyHealth;
+    EnemySpawn[] enemySpawns;
     [SerializeField]
-    AttackDamage bulletAttackDamage;
+    float amountSpawnEnemyTimeToDecrease;
     [SerializeField]
     private float timeToFinishRound = 60f;
-    [SerializeField]
-    private int amountEnemyHealthToIncrease = 1;
-    [SerializeField]
-    private int amountBulletDamageToIncrease = 1;
     private int roundNumber;
     private float timerAux;
     
@@ -31,11 +27,8 @@ public class RoundManager : MonoBehaviour
         if (SetTimerToChangeRound())
         {
             IncreaseRoundNumber();
-            IncreaseEnemyHealth();
-            IncreaseBulletAttackDamage();
+            DecreaseEnemySpawnInterval();
         }
-
-        Debug.Log("Round number: " + roundNumber + " || " + "Enemy health: " + enemyHealth.Value + " || " + "Bullet damage: " + bulletAttackDamage.Value);
     }
 
     bool SetTimerToChangeRound()
@@ -52,18 +45,19 @@ public class RoundManager : MonoBehaviour
         return false;
     }
 
-    void IncreaseBulletAttackDamage()
-    {
-        bulletAttackDamage.Value += amountBulletDamageToIncrease;
-    }
-
-    void IncreaseEnemyHealth()
-    {
-        enemyHealth.Value += amountEnemyHealthToIncrease;
-    }
-
     void IncreaseRoundNumber()
     {
         roundNumber++;
+    }
+
+    void DecreaseEnemySpawnInterval()
+    {
+        foreach(EnemySpawn enemySpawn in enemySpawns)
+        {
+            if(enemySpawn.SpawnInterval > 0)
+            {
+                enemySpawn.SpawnInterval -= amountSpawnEnemyTimeToDecrease;
+            }
+        }
     }
 }

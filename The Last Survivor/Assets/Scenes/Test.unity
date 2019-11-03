@@ -684,6 +684,8 @@ MonoBehaviour:
   enemyHealth: {fileID: 2544495602095865892, guid: 06ffaf97cf60cf5419aac9659f41b705,
     type: 3}
   bulletAttackDamage: {fileID: 634236108}
+  initialEnemyHealthValue: 100
+  initialBulletDamageValue: 10
   timeToFinishRound: 10
   amountEnemyHealthToIncrease: 2
   amountBulletDamageToIncrease: 2

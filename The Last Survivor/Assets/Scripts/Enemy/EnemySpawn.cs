@@ -10,18 +10,24 @@ public class EnemySpawn : MonoBehaviour
     [SerializeField]
     private GameObject enemy;
     [SerializeField]
-    
+
+    public float SpawnInterval
+    {
+        get{ return spawnInterval; }
+        set{ spawnInterval = value; }
+    }
+
     private void Awake()
     {
         timerAux = spawnInterval;
     }
     private void Update()
     {
-        spawnInterval -= Time.deltaTime;
-        if (spawnInterval < 0)
+        timerAux -= Time.deltaTime;
+        if (timerAux < 0)
         {
             Spawn();
-            spawnInterval = timerAux;
+            timerAux = spawnInterval;
         }
     }
     void Spawn()
