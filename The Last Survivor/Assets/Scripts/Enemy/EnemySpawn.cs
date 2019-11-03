@@ -8,7 +8,7 @@ public class EnemySpawn : MonoBehaviour
     [SerializeField]
     private float spawnInterval = 1f;
     [SerializeField]
-    private GameObject enemy;
+    private GameObject[] enemies;
     [SerializeField]
 
     public float SpawnInterval
@@ -32,6 +32,7 @@ public class EnemySpawn : MonoBehaviour
     }
     void Spawn()
     {
-        Instantiate(enemy, transform.position, Quaternion.identity);
+        int random = Random.Range(0, enemies.Length);
+        Instantiate(enemies[random], transform.position, Quaternion.identity);
     }
 }
