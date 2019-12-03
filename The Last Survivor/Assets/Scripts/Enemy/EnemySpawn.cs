@@ -9,7 +9,6 @@ public class EnemySpawn : MonoBehaviour
     private float spawnInterval = 1f;
     [SerializeField]
     private GameObject[] enemies;
-    [SerializeField]
 
     public float SpawnInterval
     {
