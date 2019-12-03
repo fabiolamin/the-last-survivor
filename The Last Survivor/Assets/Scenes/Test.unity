@@ -686,8 +686,11 @@ MonoBehaviour:
   enemySpawns:
   - {fileID: 790533384}
   - {fileID: 2030998867}
-  amountSpawnEnemyTimeToDecrease: 0.5
-  timeToFinishRound: 10
+  enemiesAttackDamage:
+  - {fileID: 2018503672504583369, guid: 06ffaf97cf60cf5419aac9659f41b705, type: 3}
+  - {fileID: 2472028601484531681, guid: e6ff76e65721cc44f9905ee7751e1a68, type: 3}
+  amountEnemyAttackDamageToIncrease: 5
+  timeToFinishRound: 3
 --- !u!4 &1630909851
 Transform:
   m_ObjectHideFlags: 0
