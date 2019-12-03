@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PlayerCollider : MonoBehaviour
 {
-    Health playerHealth;
+    private Health playerHealth;
+    private AttackDamage enemyAttackDamage;
 
     private void Awake()
     {
@@ -15,7 +16,8 @@ public class PlayerCollider : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Enemy"))
         {
-            playerHealth.Change(-10);
+            enemyAttackDamage = collision.gameObject.GetComponent<AttackDamage>();
+            playerHealth.Change(- enemyAttackDamage.Value);
             {
                 if (playerHealth.Value <= 0)
                 {
