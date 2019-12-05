@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class EnemyCollider : MonoBehaviour
 {
-    Health enemyHealth;
-    AttackDamage bulletAttackDamage;
+    private Health enemyHealth;
+    private AttackDamage bulletAttackDamage;
 
     private void Awake()
     {
         enemyHealth = GetComponent<Health>();
-        bulletAttackDamage = GameObject.FindGameObjectWithTag("Bullet").GetComponent<AttackDamage>();
     }
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.CompareTag("Bullet"))
         {
+            bulletAttackDamage = collision.gameObject.GetComponent<AttackDamage>();
             enemyHealth.Change(- bulletAttackDamage.Value);
             if(enemyHealth.Value <= 0)
             {
