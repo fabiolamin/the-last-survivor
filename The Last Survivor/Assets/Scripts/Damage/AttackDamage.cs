@@ -5,15 +5,16 @@ using UnityEngine;
 public class AttackDamage : MonoBehaviour
 {
     [SerializeField]
-    private int value = 10;
-    public int Value
+    private float value = 10;
+
+    public float Value 
     {
         get{ return value; }
-        set{ this.value = value; }
+        private set { this.value = value; }
     }
-
-    public void Change(int amount)
+   
+    public void Change(float amount)
     {
-        value += amount;
+        Value += amount;
     }
 }
