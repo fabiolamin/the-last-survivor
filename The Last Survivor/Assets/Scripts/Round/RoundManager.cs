@@ -6,32 +6,34 @@ using UnityEngine;
 public class RoundManager : MonoBehaviour
 {
     [SerializeField]
-    Health playerHealth;
+    private Health playerHealth;
     [SerializeField]
-    EnemySpawn[] enemySpawns;
+    private EnemySpawn[] enemySpawns;
     [SerializeField]
-    float amountSpawnEnemyTimeToDecrease;
+    private AttackDamage[] enemiesAttackDamage;
+    [SerializeField]
+    float amountEnemyAttackDamageToIncrease;
     [SerializeField]
     private float timeToFinishRound = 60f;
     private int roundNumber;
     private float timerAux;
     
-    void Awake()
+    private void Awake()
     {
         roundNumber = 1;
         timerAux = timeToFinishRound;
     }
 
-    void Update()
+    private void Update()
     {
         if (SetTimerToChangeRound())
         {
             IncreaseRoundNumber();
-            DecreaseEnemySpawnInterval();
+            IncreaseEnemyAttackDamage();
         }
     }
 
-    bool SetTimerToChangeRound()
+    private bool SetTimerToChangeRound()
     {
         timeToFinishRound -= Time.deltaTime;
         if(timeToFinishRound < 0)
@@ -50,14 +52,8 @@ public class RoundManager : MonoBehaviour
         roundNumber++;
     }
 
-    void DecreaseEnemySpawnInterval()
+    private void IncreaseEnemyAttackDamage()
     {
-        foreach(EnemySpawn enemySpawn in enemySpawns)
-        {
-            if(enemySpawn.SpawnInterval > 0)
-            {
-                enemySpawn.SpawnInterval -= amountSpawnEnemyTimeToDecrease;
-            }
-        }
+        //ToDo
     }
 }
