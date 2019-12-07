@@ -11,6 +11,14 @@ public class Health : MonoBehaviour
         private set {this.value = value;}
     }
 
+    private void Update()
+    {
+        if(Value <=0)
+        {
+            Destroy(gameObject);
+        }
+    }
+
     public void Change(float amount)
     {
         value += amount;
