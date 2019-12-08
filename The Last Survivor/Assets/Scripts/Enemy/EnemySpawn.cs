@@ -5,10 +5,11 @@ using UnityEngine;
 public class EnemySpawn : MonoBehaviour
 {
     private float timerAux;
+    private Pool enemySpawnPool;
+    private int position;
+    private GameObject enemy;
     [SerializeField]
     private float spawnInterval = 1f;
-    [SerializeField]
-    private GameObject[] enemies;
 
     public float SpawnInterval
     {
@@ -19,6 +20,8 @@ public class EnemySpawn : MonoBehaviour
     private void Awake()
     {
         timerAux = spawnInterval;
+        enemySpawnPool = GetComponent<Pool>();
+        position = 0;
     }
     private void Update()
     {
@@ -29,9 +32,12 @@ public class EnemySpawn : MonoBehaviour
             timerAux = spawnInterval;
         }
     }
-    void Spawn()
+    private void Spawn()
     {
-        int random = Random.Range(0, enemies.Length);
-        Instantiate(enemies[random], transform.position, Quaternion.identity);
+        if(position < enemySpawnPool.InstantiatePrefabs.Length)
+        {
+            enemySpawnPool.EnablePrefab(position);
+            position++;
+        }
     }
 }
