@@ -1,30 +1,38 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class WeaponShoot : MonoBehaviour
 {
-    AttackDamage weaponAttackDamage;
+    private AttackDamage weaponAttackDamage;
 
     private void Awake()
     {
         weaponAttackDamage = GetComponent<AttackDamage>();
     }
-    private void FixedUpdate()
+    private void Update()
     {
-        Debug.DrawRay(transform.position, transform.forward * 25f, Color.red);
+        Ray ray = new Ray(transform.position, transform.forward);
+        RaycastHit hit;
+        if (Physics.Raycast(ray.origin, ray.direction, out hit, 25f))
+        {
+            GameObject target = hit.collider.gameObject;
+            VerifyTarget(target);
+        }
+    }
+
+    private void VerifyTarget(GameObject target)
+    {
+        if (target.CompareTag("Enemy"))
+        {
+            DamageEnemy(target);
+        }
+    }
+
+    private void DamageEnemy(GameObject enemy)
+    {
         if (Input.GetMouseButtonDown(0))
         {
-            RaycastHit hit;
-            if(Physics.Raycast(transform.position, transform.forward, out hit, 25f))
-            {
-                GameObject gameObject = hit.collider.gameObject;
-                if (gameObject.CompareTag("Enemy"))
-                {
-                    Health enemyHealth = gameObject.GetComponent<Health>();
-                    enemyHealth.Change(-weaponAttackDamage.Value);
-                }
-            }
+            Health enemyHealth = enemy.GetComponent<Health>();
+            enemyHealth.Change(-weaponAttackDamage.Value);
         }
     }
 }
