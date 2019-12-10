@@ -351,10 +351,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 790533383}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b0e0ceab3188724aba7018a355d01bf, type: 3}
+  m_Script: {fileID: 11500000, guid: ee44f58e9bfc7ca4bae14adbdaf72ac5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnInterval: 3
+  spawnInterval: 1
 --- !u!135 &790533385
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -661,9 +661,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHealth: {fileID: 1153091932}
-  enemySpawns:
-  - {fileID: 790533384}
-  - {fileID: 0}
   enemiesAttackDamage:
   - {fileID: 2018503672504583369, guid: 06ffaf97cf60cf5419aac9659f41b705, type: 3}
   - {fileID: 2472028601484531681, guid: e6ff76e65721cc44f9905ee7751e1a68, type: 3}
