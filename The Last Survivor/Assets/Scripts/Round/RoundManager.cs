@@ -8,8 +8,6 @@ public class RoundManager : MonoBehaviour
     [SerializeField]
     private Health playerHealth;
     [SerializeField]
-    private EnemySpawn[] enemySpawns;
-    [SerializeField]
     private AttackDamage[] enemiesAttackDamage;
     [SerializeField]
     float amountEnemyAttackDamageToIncrease;
