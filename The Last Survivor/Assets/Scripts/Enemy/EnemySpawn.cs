@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameObjectSpawn : MonoBehaviour
+public class EnemySpawn : MonoBehaviour
 {
     private float timerAux;
-    private Pool gameObjectSpawnPool;
+    private Pool enemySpawnPool;
     private int position;
     [SerializeField]
     private float spawnInterval = 1f;
@@ -19,7 +19,7 @@ public class GameObjectSpawn : MonoBehaviour
     private void Awake()
     {
         timerAux = spawnInterval;
-        gameObjectSpawnPool = GetComponent<Pool>();
+        enemySpawnPool = GetComponent<Pool>();
         position = 0;
     }
     private void Update()
@@ -33,9 +33,9 @@ public class GameObjectSpawn : MonoBehaviour
     }
     private void Spawn()
     {
-        if (position < gameObjectSpawnPool.InstantiatePrefabs.Length)
+        if (position < enemySpawnPool.InstantiatePrefabs.Length)
         {
-            gameObjectSpawnPool.EnablePrefab(position);
+            enemySpawnPool.EnablePrefab(position);
             position++;
         }
     }
