@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Pool : MonoBehaviour
 {
-    private GameObject prefab;
+    private GameObject gamObject;
     [SerializeField]
     private GameObject[] prefabToInstantiate;
     [SerializeField]
@@ -25,10 +25,10 @@ public class Pool : MonoBehaviour
         for (int position = 0; position < InstantiatePrefabs.Length; position++)
         {
             int random = Random.Range(0, prefabToInstantiate.Length);
-            prefab = Instantiate(prefabToInstantiate[random], transform.position, Quaternion.identity);
-            prefab.transform.SetParent(parentGameObject.transform);
-            prefab.SetActive(false);
-            InstantiatePrefabs[position] = prefab;
+            gamObject = Instantiate(prefabToInstantiate[random], transform.position, Quaternion.identity);
+            gamObject.transform.SetParent(parentGameObject.transform);
+            gamObject.SetActive(false);
+            InstantiatePrefabs[position] = gamObject;
         }
     }
 
@@ -44,7 +44,7 @@ public class Pool : MonoBehaviour
 
     public void ChangePrefabStatus(int position, bool status)
     {
-        prefab = InstantiatePrefabs[position];
-        prefab.SetActive(status);
+        gamObject = InstantiatePrefabs[position];
+        gamObject.SetActive(status);
     }
 }
