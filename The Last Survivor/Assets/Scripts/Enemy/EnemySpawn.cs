@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySpawn : MonoBehaviour
+public class EnemySpawn : MonoBehaviour, ISpawnAction
 {
     private float timerAux;
     private Pool enemySpawnPool;
@@ -31,7 +31,8 @@ public class EnemySpawn : MonoBehaviour
             timerAux = spawnInterval;
         }
     }
-    private void Spawn()
+
+    public void Spawn()
     {
         if (position < enemySpawnPool.InstantiatePrefabs.Length)
         {

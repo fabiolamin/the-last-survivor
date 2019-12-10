@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class ItemSpawn : MonoBehaviour
+public class ItemSpawn : MonoBehaviour, ISpawnAction
 {
     private float timer;
     [SerializeField]
@@ -18,16 +18,16 @@ public class ItemSpawn : MonoBehaviour
     private void Update()
     {
         spawnInterval -= Time.deltaTime;
-        if(spawnInterval <= 0)
+        if (spawnInterval <= 0)
         {
             Spawn();
             spawnInterval = timer;
         }
     }
 
-    private void Spawn()
+    public void Spawn()
     {
-        if(IsActiveToSpawn)
+        if (IsActiveToSpawn)
         {
             int random = Random.Range(0, items.Length);
             items[random].SetActive(true);
