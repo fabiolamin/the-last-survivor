@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5174134239088176022}
   - component: {fileID: 4370002921672219633}
   - component: {fileID: 3743678441952100230}
+  - component: {fileID: 8504463494116028823}
   m_Layer: 0
   m_Name: Ammo
   m_TagString: Untagged
@@ -87,8 +88,20 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1215108279700861227}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8504463494116028823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1215108279700861227}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80f40643c0a788d4080c604d613422ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

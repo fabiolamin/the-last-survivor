@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 705378121039564035}
   - component: {fileID: 4974908151820541911}
   - component: {fileID: 4786150309111796290}
+  - component: {fileID: 4111059973140535780}
   m_Layer: 0
   m_Name: Life
   m_TagString: Untagged
@@ -87,8 +88,20 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1557928915589843864}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4111059973140535780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1557928915589843864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80f40643c0a788d4080c604d613422ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
