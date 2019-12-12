@@ -17,6 +17,14 @@ public class ItemSpawn : MonoBehaviour, ISpawnAction
 
     private void Update()
     {
+        if (IsActiveToSpawn)
+        {
+            SetCountDown();
+        }
+    }
+
+    private void SetCountDown()
+    {
         spawnInterval -= Time.deltaTime;
         if (spawnInterval <= 0)
         {
@@ -27,10 +35,8 @@ public class ItemSpawn : MonoBehaviour, ISpawnAction
 
     public void Spawn()
     {
-        if (IsActiveToSpawn)
-        {
-            int random = Random.Range(0, items.Length);
-            items[random].SetActive(true);
-        }
+        int random = Random.Range(0, items.Length);
+        items[random].SetActive(true);
+        IsActiveToSpawn = false;
     }
 }
