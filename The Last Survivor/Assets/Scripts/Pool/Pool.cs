@@ -1,50 +1,54 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Pool : MonoBehaviour
 {
     private GameObject gamObject;
     [SerializeField]
-    private GameObject[] prefabToInstantiate;
+    private GameObject[] gameObjectToInstantiate;
     [SerializeField]
     private int amountToInstantiate = 10;
-    private GameObject parentGameObject;
 
-    public GameObject[] InstantiatePrefabs { get; private set; }
+    public GameObject[] InstantiatedGameObjects { get; private set; }
 
     private void Awake()
     {
-        parentGameObject = gameObject;
-        InstantiatePrefabs = new GameObject[amountToInstantiate];
-        SetPrefabs();
+        InstantiatedGameObjects = new GameObject[amountToInstantiate];
+        SetGameObjects();
     }
 
-    private void SetPrefabs()
+    private void SetGameObjects()
     {
-        for (int position = 0; position < InstantiatePrefabs.Length; position++)
+        for (int position = 0; position < amountToInstantiate; position++)
         {
-            int random = Random.Range(0, prefabToInstantiate.Length);
-            gamObject = Instantiate(prefabToInstantiate[random], transform.position, Quaternion.identity);
-            gamObject.transform.SetParent(parentGameObject.transform);
+            int availablePosition = position  % gameObjectToInstantiate.Length;
+            gamObject = Instantiate(gameObjectToInstantiate[availablePosition], transform.position, Quaternion.identity);
+            gamObject.transform.SetParent(transform);
             gamObject.SetActive(false);
-            InstantiatePrefabs[position] = gamObject;
+            InstantiatedGameObjects[position] = gamObject;
         }
     }
 
-    public void EnablePrefab(int position)
+    public GameObject GetGameObject(int position)
     {
-        ChangePrefabStatus(position, true);
+        return InstantiatedGameObjects[position];
     }
 
-    public void DisablePrefab(int position)
+    public void EnableGameObject(int position)
     {
-        ChangePrefabStatus(position, false);
+        ChangeGameObjectStatus(position, true);
     }
 
-    public void ChangePrefabStatus(int position, bool status)
+    public void DisableGameObject(int position)
     {
-        gamObject = InstantiatePrefabs[position];
-        gamObject.SetActive(status);
+        ChangeGameObjectStatus(position, false);
     }
+
+    public void ChangeGameObjectStatus(int position, bool status)
+    {
+        InstantiatedGameObjects[position].SetActive(status);
+    }
+
 }
