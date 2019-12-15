@@ -106,7 +106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 874b38e15a6aafa46a1b7f8da119ee25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabToInstantiate:
+  gameObjectToInstantiate:
   - {fileID: 2544495602095865916, guid: 06ffaf97cf60cf5419aac9659f41b705, type: 3}
   - {fileID: 2544495602095865916, guid: e6ff76e65721cc44f9905ee7751e1a68, type: 3}
   amountToInstantiate: 10
