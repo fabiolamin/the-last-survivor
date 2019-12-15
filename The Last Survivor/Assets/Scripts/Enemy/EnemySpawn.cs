@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class EnemySpawn : MonoBehaviour, ISpawnAction
 {
-    private float timerAux;
-    private Pool enemySpawnPool;
     private int position;
+    private float auxiliaryTimer;
+    private Pool enemySpawnPool;
     [SerializeField]
     private float spawnInterval = 1f;
 
@@ -18,26 +18,31 @@ public class EnemySpawn : MonoBehaviour, ISpawnAction
 
     private void Awake()
     {
-        timerAux = spawnInterval;
-        enemySpawnPool = GetComponent<Pool>();
         position = 0;
+        auxiliaryTimer = spawnInterval;
+        enemySpawnPool = GetComponent<Pool>();
     }
     private void Update()
     {
-        timerAux -= Time.deltaTime;
-        if (timerAux < 0)
+        if (position < enemySpawnPool.InstantiatedGameObjects.Length)
+        {
+            SetCountDown();
+        }
+    }
+
+    private void SetCountDown()
+    {
+        spawnInterval -= Time.deltaTime;
+        if (spawnInterval < 0)
         {
             Spawn();
-            timerAux = spawnInterval;
+            spawnInterval = auxiliaryTimer;
         }
     }
 
     public void Spawn()
     {
-        if (position < enemySpawnPool.InstantiatePrefabs.Length)
-        {
-            enemySpawnPool.EnablePrefab(position);
-            position++;
-        }
+        enemySpawnPool.EnableGameObject(position);
+        position++;
     }
 }
