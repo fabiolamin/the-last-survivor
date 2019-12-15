@@ -2,7 +2,7 @@
 
 public class ItemSpawn : MonoBehaviour, ISpawnAction
 {
-    private float timer;
+    private float auxiliaryTimer;
     private Pool itemSpawnPool;
     [SerializeField]
     private float spawnInterval = 3f;
@@ -10,7 +10,7 @@ public class ItemSpawn : MonoBehaviour, ISpawnAction
 
     private void Awake()
     {
-        timer = spawnInterval;
+        auxiliaryTimer = spawnInterval;
         itemSpawnPool = GetComponent<Pool>();
         IsActiveToSpawn = true;
     }
@@ -29,14 +29,14 @@ public class ItemSpawn : MonoBehaviour, ISpawnAction
         if (spawnInterval <= 0)
         {
             Spawn();
-            spawnInterval = timer;
+            spawnInterval = auxiliaryTimer;
         }
     }
 
     public void Spawn()
     {
-        int random = Random.Range(0, itemSpawnPool.InstantiatePrefabs.Length);
-        itemSpawnPool.ChangePrefabStatus(random, true);
+        int random = Random.Range(0, itemSpawnPool.InstantiatedGameObjects.Length);
+        itemSpawnPool.ChangeGameObjectStatus(random, true);
         IsActiveToSpawn = false;
     }
 }
