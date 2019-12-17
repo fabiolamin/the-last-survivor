@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class EnemySpawn : MonoBehaviour, ISpawnAction
 {
@@ -30,6 +28,10 @@ public class EnemySpawn : MonoBehaviour, ISpawnAction
             {
                 Spawn();
             }
+        }
+        else
+        {
+            position = 0;
         }
     }
 
