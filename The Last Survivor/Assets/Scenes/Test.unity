@@ -538,9 +538,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHealth: {fileID: 1153091932}
-  enemiesAttackDamage:
-  - {fileID: 2018503672504583369, guid: 06ffaf97cf60cf5419aac9659f41b705, type: 3}
-  - {fileID: 2472028601484531681, guid: e6ff76e65721cc44f9905ee7751e1a68, type: 3}
   amountEnemyAttackDamageToIncrease: 5
   timeToFinishRound: 3
 --- !u!4 &1630909851
