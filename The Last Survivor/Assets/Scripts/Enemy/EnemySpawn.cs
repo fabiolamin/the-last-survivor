@@ -47,7 +47,7 @@ public class EnemySpawn : MonoBehaviour, ISpawnAction
 
     public void Spawn()
     {
-        enemySpawnPool.EnableGameObject(position);
+        enemySpawnPool.ChangeGameObjectStatus(position, true);
         position++;
     }
 }
