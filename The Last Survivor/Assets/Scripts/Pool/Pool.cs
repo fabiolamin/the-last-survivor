@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System;
 using UnityEngine;
 
 public class Pool : MonoBehaviour
@@ -57,4 +55,11 @@ public class Pool : MonoBehaviour
         InstantiatedGameObjects[position].SetActive(status);
     }
 
+    public void RecycleAllGameObjects()
+    {
+        foreach (GameObject enemy in InstantiatedGameObjects)
+        {
+            enemy.transform.position = transform.position;
+        }
+    }
 }

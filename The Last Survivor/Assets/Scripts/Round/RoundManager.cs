@@ -25,6 +25,7 @@ public class RoundManager : MonoBehaviour
         {
             IncreaseRoundNumber();
             IncreaseEnemyAttackDamage();
+            RestartEnemySpawns();
         }
     }
 
@@ -55,6 +56,14 @@ public class RoundManager : MonoBehaviour
             {
                 enemy.GetComponent<AttackDamage>().Change(amountEnemyAttackDamageToIncrease);
             }
+        }
+    }
+
+    private void RestartEnemySpawns()
+    {
+        foreach(Pool enemySpawnPool in enemySpawnsPools)
+        {
+            enemySpawnPool.RecycleAllGameObjects();
         }
     }
 }
