@@ -19,18 +19,23 @@ public class ItemSpawn : MonoBehaviour, ISpawnAction
     {
         if (IsActiveToSpawn)
         {
-            SetCountDown();
+            if(HasSpawnIntervalDone())
+            {
+                Spawn();
+            }
         }
     }
 
-    private void SetCountDown()
+    private bool HasSpawnIntervalDone()
     {
         spawnInterval -= Time.deltaTime;
         if (spawnInterval <= 0)
         {
-            Spawn();
             spawnInterval = auxiliaryTimer;
+            return true;
         }
+
+        return false;
     }
 
     public void Spawn()
