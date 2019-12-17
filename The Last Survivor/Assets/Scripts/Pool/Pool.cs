@@ -36,6 +36,16 @@ public class Pool : MonoBehaviour
         return InstantiatedGameObjects[position];
     }
 
+    public void EnableGameObject(int position)
+    {
+        ChangeGameObjectStatus(position, true);
+    }
+
+    public void DisableGameObject(int position)
+    {
+        ChangeGameObjectStatus(position, false);
+    }
+
     public void ChangeGameObjectStatus(int position, bool status)
     {
         InstantiatedGameObjects[position].SetActive(status);
