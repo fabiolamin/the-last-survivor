@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
+using System.Linq;
 
 public class RoundManager : MonoBehaviour
 {
     private int roundNumber;
-    private float timerAux;
     [SerializeField]
     private Pool[] enemySpawnsPools;
     [SerializeField]
@@ -16,12 +16,11 @@ public class RoundManager : MonoBehaviour
     private void Awake()
     {
         roundNumber = 1;
-        timerAux = timeToFinishRound;
     }
 
     private void Update()
     {
-        if (HasRoundChanged())
+        if (enemySpawnsPools.All(enemySpawnPool => enemySpawnPool.AreAllGameObjectsDisabled()))
         {
             IncreaseRoundNumber();
             IncreaseEnemyAttackDamage();
@@ -29,21 +28,7 @@ public class RoundManager : MonoBehaviour
         }
     }
 
-    private bool HasRoundChanged()
-    {
-        timeToFinishRound -= Time.deltaTime;
-        if (timeToFinishRound < 0)
-        {
-            if (playerHealth.Value > 0)
-            {
-                timeToFinishRound = timerAux;
-                return true;
-            }
-        }
-        return false;
-    }
-
-    void IncreaseRoundNumber()
+    private void IncreaseRoundNumber()
     {
         roundNumber++;
     }

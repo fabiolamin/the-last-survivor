@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using System.Linq;
 
 public class Pool : MonoBehaviour
 {
@@ -8,7 +9,6 @@ public class Pool : MonoBehaviour
     private GameObject[] gameObjectToInstantiate;
     [SerializeField]
     private int amountToInstantiate = 10;
-
     public GameObject[] InstantiatedGameObjects { get; private set; }
 
     private void Awake()
@@ -57,9 +57,14 @@ public class Pool : MonoBehaviour
 
     public void RecycleAllGameObjects()
     {
-        foreach (GameObject enemy in InstantiatedGameObjects)
+        foreach (GameObject gameObject in InstantiatedGameObjects)
         {
-            enemy.transform.position = transform.position;
+            gameObject.transform.position = transform.position;
         }
+    }
+
+    public bool AreAllGameObjectsDisabled()
+    {
+        return InstantiatedGameObjects.All(gameObject => !gameObject.activeSelf);
     }
 }
