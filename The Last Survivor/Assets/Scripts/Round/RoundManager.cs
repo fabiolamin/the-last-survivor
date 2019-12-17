@@ -1,21 +1,18 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class RoundManager : MonoBehaviour
 {
+    private int roundNumber;
+    private float timerAux;
+    [SerializeField]
+    private Pool[] enemySpawnsPools;
     [SerializeField]
     private Health playerHealth;
-    [SerializeField]
-    private AttackDamage[] enemiesAttackDamage;
     [SerializeField]
     float amountEnemyAttackDamageToIncrease;
     [SerializeField]
     private float timeToFinishRound = 60f;
-    private int roundNumber;
-    private float timerAux;
-    
+
     private void Awake()
     {
         roundNumber = 1;
@@ -24,19 +21,19 @@ public class RoundManager : MonoBehaviour
 
     private void Update()
     {
-        if (SetTimerToChangeRound())
+        if (HasRoundChanged())
         {
             IncreaseRoundNumber();
             IncreaseEnemyAttackDamage();
         }
     }
 
-    private bool SetTimerToChangeRound()
+    private bool HasRoundChanged()
     {
         timeToFinishRound -= Time.deltaTime;
-        if(timeToFinishRound < 0)
+        if (timeToFinishRound < 0)
         {
-            if(playerHealth.Value > 0)
+            if (playerHealth.Value > 0)
             {
                 timeToFinishRound = timerAux;
                 return true;
@@ -52,6 +49,12 @@ public class RoundManager : MonoBehaviour
 
     private void IncreaseEnemyAttackDamage()
     {
-        //ToDo
+        foreach (Pool enemySpawnPool in enemySpawnsPools)
+        {
+            foreach (GameObject enemy in enemySpawnPool.InstantiatedGameObjects)
+            {
+                enemy.GetComponent<AttackDamage>().Change(amountEnemyAttackDamageToIncrease);
+            }
+        }
     }
 }
