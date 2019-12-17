@@ -23,7 +23,7 @@ public class Pool : MonoBehaviour
     {
         for (int position = 0; position < amountToInstantiate; position++)
         {
-            int availablePosition = position  % gameObjectToInstantiate.Length;
+            int availablePosition = position % gameObjectToInstantiate.Length;
             gamObject = Instantiate(gameObjectToInstantiate[availablePosition], transform.position, Quaternion.identity);
             gamObject.transform.SetParent(transform);
             gamObject.SetActive(false);
@@ -38,12 +38,18 @@ public class Pool : MonoBehaviour
 
     public void EnableGameObject(int position)
     {
-        ChangeGameObjectStatus(position, true);
+        if (!InstantiatedGameObjects[position].activeSelf)
+        {
+            ChangeGameObjectStatus(position, true);
+        }
     }
 
     public void DisableGameObject(int position)
     {
-        ChangeGameObjectStatus(position, false);
+        if (InstantiatedGameObjects[position].activeSelf)
+        {
+            ChangeGameObjectStatus(position, false);
+        }
     }
 
     public void ChangeGameObjectStatus(int position, bool status)
