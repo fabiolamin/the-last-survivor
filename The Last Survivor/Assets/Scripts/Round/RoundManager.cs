@@ -3,6 +3,7 @@ using System.Linq;
 
 public class RoundManager : MonoBehaviour
 {
+    private float auxiliaryTimer;
     private int roundNumber;
     [SerializeField]
     private Pool[] enemySpawnsPools;
@@ -11,10 +12,11 @@ public class RoundManager : MonoBehaviour
     [SerializeField]
     float amountEnemyAttackDamageToIncrease;
     [SerializeField]
-    private float timeToFinishRound = 60f;
+    private float intervalToNextRound = 5f;
 
     private void Awake()
     {
+        auxiliaryTimer = intervalToNextRound;
         roundNumber = 1;
     }
 
@@ -22,10 +24,24 @@ public class RoundManager : MonoBehaviour
     {
         if (enemySpawnsPools.All(enemySpawnPool => enemySpawnPool.AreAllGameObjectsDisabled()))
         {
-            IncreaseRoundNumber();
-            IncreaseEnemyAttackDamage();
-            RestartEnemySpawns();
+            if (HasIntervalToNextRoundDone())
+            {
+                IncreaseRoundNumber();
+                IncreaseEnemyAttackDamage();
+                RestartEnemySpawns();
+            }
         }
+    }
+
+    private bool HasIntervalToNextRoundDone()
+    {
+        intervalToNextRound -= Time.deltaTime;
+        if (intervalToNextRound <= 0)
+        {
+            intervalToNextRound = auxiliaryTimer;
+            return true;
+        }
+        return false;
     }
 
     private void IncreaseRoundNumber()
@@ -46,7 +62,7 @@ public class RoundManager : MonoBehaviour
 
     private void RestartEnemySpawns()
     {
-        foreach(Pool enemySpawnPool in enemySpawnsPools)
+        foreach (Pool enemySpawnPool in enemySpawnsPools)
         {
             enemySpawnPool.RecycleAllGameObjects();
         }
