@@ -23,4 +23,9 @@ public class Health : MonoBehaviour
     {
         value += amount;
     }
+
+    public void Restart()
+    {
+        Value = value;
+    }
 }
