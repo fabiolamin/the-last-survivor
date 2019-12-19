@@ -6,7 +6,7 @@ public class RoundManager : MonoBehaviour
     private float auxiliaryTimer;
     private int roundNumber;
     [SerializeField]
-    private Pool[] enemySpawnsPools;
+    private GameObject[] enemySpawns;
     [SerializeField]
     private Health playerHealth;
     [SerializeField]
@@ -22,13 +22,14 @@ public class RoundManager : MonoBehaviour
 
     private void Update()
     {
-        if (enemySpawnsPools.All(enemySpawnPool => enemySpawnPool.AreAllGameObjectsDisabled()))
+        if (enemySpawns.All(enemySpawn => enemySpawn.GetComponent<Pool>().AreAllGameObjectsDisabled()))
         {
             if (HasIntervalToNextRoundDone())
             {
                 IncreaseRoundNumber();
                 IncreaseEnemyAttackDamage();
                 RestartEnemySpawns();
+                enemySpawns.Select(enemySpawn => enemySpawn.GetComponent<EnemySpawn>().IsReadyToSpawn = true);
             }
         }
     }
@@ -51,9 +52,9 @@ public class RoundManager : MonoBehaviour
 
     private void IncreaseEnemyAttackDamage()
     {
-        foreach (Pool enemySpawnPool in enemySpawnsPools)
+        foreach (GameObject enemySpawn in enemySpawns)
         {
-            foreach (GameObject enemy in enemySpawnPool.InstantiatedGameObjects)
+            foreach (GameObject enemy in enemySpawn.GetComponent<Pool>().InstantiatedGameObjects)
             {
                 enemy.GetComponent<AttackDamage>().Change(amountEnemyAttackDamageToIncrease);
             }
@@ -62,9 +63,9 @@ public class RoundManager : MonoBehaviour
 
     private void RestartEnemySpawns()
     {
-        foreach (Pool enemySpawnPool in enemySpawnsPools)
+        foreach (GameObject enemySpawn in enemySpawns)
         {
-            enemySpawnPool.RecycleAllGameObjects();
+            enemySpawn.GetComponent<Pool>().RecycleAllGameObjects();
         }
     }
 }
