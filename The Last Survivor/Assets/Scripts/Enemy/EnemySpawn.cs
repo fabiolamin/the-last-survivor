@@ -2,6 +2,7 @@
 
 public class EnemySpawn : MonoBehaviour, ISpawnAction
 {
+    private int position;
     private float auxiliaryTimer;
     private Pool enemySpawnPool;
     [SerializeField]
@@ -18,13 +19,13 @@ public class EnemySpawn : MonoBehaviour, ISpawnAction
         auxiliaryTimer = spawnInterval;
         enemySpawnPool = GetComponent<Pool>();
         IsReadyToSpawn = true;
+        position = 0;
     }
     private void Update()
     {
         if (IsReadyToSpawn)
         {
             Spawn();
-            IsReadyToSpawn = false;
         }
     }
 
@@ -42,12 +43,18 @@ public class EnemySpawn : MonoBehaviour, ISpawnAction
 
     public void Spawn()
     {
-        for (int position = 0; position < enemySpawnPool.InstantiatedGameObjects.Length; position++)
+        if(position < enemySpawnPool.InstantiatedGameObjects.Length)
         {
             if (HasSpawnIntervalDone())
             {
                 enemySpawnPool.EnableGameObject(position);
+                position++;
             }
+        }
+        else
+        {
+            position = 0;
+            IsReadyToSpawn = false;
         }
     }
 }
