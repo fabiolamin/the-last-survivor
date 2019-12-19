@@ -26,10 +26,7 @@ public class RoundManager : MonoBehaviour
         {
             if (HasIntervalToNextRoundDone())
             {
-                IncreaseRoundNumber();
-                IncreaseEnemyAttackDamage();
-                RestartEnemySpawns();
-                enemySpawns.Select(enemySpawn => enemySpawn.GetComponent<EnemySpawn>().IsReadyToSpawn = true);
+                SetNextRound();
             }
         }
     }
@@ -43,6 +40,15 @@ public class RoundManager : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    private void SetNextRound()
+    {
+        IncreaseRoundNumber();
+        IncreaseEnemyAttackDamage();
+        RestartEnemySpawns();
+        RestartEnemyHealth();
+        enemySpawns.Select(enemySpawn => enemySpawn.GetComponent<EnemySpawn>().IsReadyToSpawn = true);
     }
 
     private void IncreaseRoundNumber()
