@@ -41,7 +41,7 @@ public class ItemSpawn : MonoBehaviour, ISpawnAction
     public void Spawn()
     {
         int random = Random.Range(0, itemSpawnPool.InstantiatedGameObjects.Length);
-        itemSpawnPool.ChangeGameObjectStatus(random, true);
+        itemSpawnPool.EnableGameObject(random);
         IsActiveToSpawn = false;
     }
 }

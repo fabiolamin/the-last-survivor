@@ -38,7 +38,7 @@ public class Pool : MonoBehaviour
     {
         if (!InstantiatedGameObjects[position].activeSelf)
         {
-            ChangeGameObjectStatus(position, true);
+            InstantiatedGameObjects[position].SetActive(true);
         }
     }
 
@@ -46,13 +46,8 @@ public class Pool : MonoBehaviour
     {
         if (InstantiatedGameObjects[position].activeSelf)
         {
-            ChangeGameObjectStatus(position, false);
+            InstantiatedGameObjects[position].SetActive(false);
         }
-    }
-
-    public void ChangeGameObjectStatus(int position, bool status)
-    {
-        InstantiatedGameObjects[position].SetActive(status);
     }
 
     public void RecycleAllGameObjects()
@@ -61,10 +56,5 @@ public class Pool : MonoBehaviour
         {
             gameObject.transform.position = transform.position;
         }
-    }
-
-    public bool AreAllGameObjectsDisabled()
-    {
-        return InstantiatedGameObjects.All(gameObject => !gameObject.activeSelf);
     }
 }
