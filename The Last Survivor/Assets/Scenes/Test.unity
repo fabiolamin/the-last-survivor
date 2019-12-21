@@ -212,6 +212,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: -275.64, y: 209.5, z: 0}
+--- !u!1 &422436778 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 766983301341845572, guid: 0a99692694800654e808b6ec3f2a898c,
+    type: 3}
+  m_PrefabInstance: {fileID: 766983300756376899}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &447188092
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -553,7 +559,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 766983300756376899}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 422436778}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 874b38e15a6aafa46a1b7f8da119ee25, type: 3}
@@ -702,6 +708,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8007422852810299364, guid: 1143ddb41a5634a48bb2b101aae49e89,
         type: 3}
+      propertyPath: enemySpawns.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8007422852810299364, guid: 1143ddb41a5634a48bb2b101aae49e89,
+        type: 3}
       propertyPath: playerHealth
       value: 
       objectReference: {fileID: 1153091932}
@@ -710,5 +721,10 @@ PrefabInstance:
       propertyPath: enemySpawnsPools.Array.data[0]
       value: 
       objectReference: {fileID: 766983300756376900}
+    - target: {fileID: 8007422852810299364, guid: 1143ddb41a5634a48bb2b101aae49e89,
+        type: 3}
+      propertyPath: enemySpawns.Array.data[0]
+      value: 
+      objectReference: {fileID: 422436778}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1143ddb41a5634a48bb2b101aae49e89, type: 3}
