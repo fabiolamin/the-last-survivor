@@ -2,6 +2,7 @@
 
 public class Health : MonoBehaviour
 {
+    private float auxiliaryValue;
     [SerializeField]
     private float value = 100;
     public float Value
@@ -9,6 +10,11 @@ public class Health : MonoBehaviour
         get {return value;}
 
         private set {this.value = value;}
+    }
+
+    private void Awake()
+    {
+        auxiliaryValue = Value;
     }
 
     private void Update()
@@ -26,6 +32,6 @@ public class Health : MonoBehaviour
 
     public void Restart()
     {
-        Value = value;
+        Value = auxiliaryValue;
     }
 }
