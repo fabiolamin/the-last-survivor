@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Linq;
 
 public class EnemySpawn : MonoBehaviour, ISpawnAction
 {
@@ -29,6 +30,23 @@ public class EnemySpawn : MonoBehaviour, ISpawnAction
         }
     }
 
+    public void Spawn()
+    {
+        if (position < enemySpawnPool.InstantiatedGameObjects.Length)
+        {
+            if (HasSpawnIntervalDone())
+            {
+                enemySpawnPool.EnableGameObject(position);
+                position++;
+            }
+        }
+        else
+        {
+            IsReadyToSpawn = false;
+            position = 0;
+        }
+    }
+
     private bool HasSpawnIntervalDone()
     {
         spawnInterval -= Time.deltaTime;
@@ -41,20 +59,9 @@ public class EnemySpawn : MonoBehaviour, ISpawnAction
         return false;
     }
 
-    public void Spawn()
+    public void Restart()
     {
-        if(position < enemySpawnPool.InstantiatedGameObjects.Length)
-        {
-            if (HasSpawnIntervalDone())
-            {
-                enemySpawnPool.EnableGameObject(position);
-                position++;
-            }
-        }
-        else
-        {
-            position = 0;
-            IsReadyToSpawn = false;
-        }
+        IsReadyToSpawn = true;
+        enemySpawnPool.RecycleAllGameObjects();
     }
 }
