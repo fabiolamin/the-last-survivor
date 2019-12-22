@@ -2,24 +2,24 @@
 
 public class Health : MonoBehaviour
 {
-    private float auxiliaryValue;
+    private float auxiliaryAmount;
     [SerializeField]
-    private float value = 100;
-    public float Value
+    private float amount = 100;
+    public float Amount
     {
-        get {return value;}
+        get {return amount; }
 
-        private set {this.value = value;}
+        private set { amount = value;}
     }
 
     private void Awake()
     {
-        auxiliaryValue = Value;
+        auxiliaryAmount = Amount;
     }
 
     private void Update()
     {
-        if(Value <=0)
+        if(Amount <= 0)
         {
             gameObject.SetActive(false);
         }
@@ -27,11 +27,11 @@ public class Health : MonoBehaviour
 
     public void Change(float amount)
     {
-        value += amount;
+        amount += amount;
     }
 
     public void Restart()
     {
-        Value = auxiliaryValue;
+        Amount = auxiliaryAmount;
     }
 }

@@ -28,7 +28,7 @@ public class RoundManager : MonoBehaviour
 
     private bool AreAllEnemiesDefeated()
     {
-        return enemySpawns.All(enemySpawn => enemySpawn.GetComponent<Pool>().InstantiatedGameObjects.All(enemy => enemy.GetComponent<Health>().Value <= 0));
+        return enemySpawns.All(enemySpawn => enemySpawn.GetComponent<Pool>().InstantiatedGameObjects.All(enemy => enemy.GetComponent<Health>().Amount <= 0));
     }
 
     private void SetNextRound()

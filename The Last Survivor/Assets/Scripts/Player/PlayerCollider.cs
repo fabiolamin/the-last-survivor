@@ -19,7 +19,7 @@ public class PlayerCollider : MonoBehaviour
             enemyAttackDamage = collision.gameObject.GetComponent<AttackDamage>();
             playerHealth.Change(- enemyAttackDamage.Value);
             {
-                if (playerHealth.Value <= 0)
+                if (playerHealth.Amount <= 0)
                 {
                     Destroy(gameObject);
                 }
