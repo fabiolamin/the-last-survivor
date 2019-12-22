@@ -3,7 +3,6 @@ using System.Linq;
 
 public class RoundManager : MonoBehaviour
 {
-    private float auxiliaryTimer;
     private int roundNumber;
     [SerializeField]
     private GameObject[] enemySpawns;
@@ -16,39 +15,28 @@ public class RoundManager : MonoBehaviour
 
     private void Awake()
     {
-        auxiliaryTimer = intervalToNextRound;
         roundNumber = 1;
     }
 
     private void Update()
     {
-        if (enemySpawns.All(enemySpawn => enemySpawn.GetComponent<Pool>().AreAllGameObjectsDisabled()))
+        if (AreAllEnemiesDefeated())
         {
-            if (HasIntervalToNextRoundDone())
-            {
-                SetNextRound();
-            }
+            SetNextRound();
         }
     }
 
-    private bool HasIntervalToNextRoundDone()
+    private bool AreAllEnemiesDefeated()
     {
-        intervalToNextRound -= Time.deltaTime;
-        if (intervalToNextRound <= 0)
-        {
-            intervalToNextRound = auxiliaryTimer;
-            return true;
-        }
-        return false;
+        return enemySpawns.All(enemySpawn => enemySpawn.GetComponent<Pool>().InstantiatedGameObjects.All(enemy => enemy.GetComponent<Health>().Value <= 0));
     }
 
     private void SetNextRound()
     {
         IncreaseRoundNumber();
         IncreaseEnemyAttackDamage();
-        RestartEnemySpawns();
         RestartEnemyHealth();
-        enemySpawns.Select(enemySpawn => enemySpawn.GetComponent<EnemySpawn>().IsReadyToSpawn = true);
+        enemySpawns.ToList().ForEach(enemySpawn => enemySpawn.GetComponent<EnemySpawn>().Restart());
     }
 
     private void IncreaseRoundNumber()
@@ -67,11 +55,14 @@ public class RoundManager : MonoBehaviour
         }
     }
 
-    private void RestartEnemySpawns()
+    private void RestartEnemyHealth()
     {
         foreach (GameObject enemySpawn in enemySpawns)
         {
-            enemySpawn.GetComponent<Pool>().RecycleAllGameObjects();
+            foreach (GameObject enemy in enemySpawn.GetComponent<Pool>().InstantiatedGameObjects)
+            {
+                enemy.GetComponent<Health>().Restart();
+            }
         }
     }
 }
