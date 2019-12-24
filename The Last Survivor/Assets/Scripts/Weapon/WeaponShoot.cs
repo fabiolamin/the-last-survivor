@@ -26,24 +26,15 @@ public class WeaponShoot : MonoBehaviour
     {
         ammo.Change(-1);
 
-        if (HasATargetBeenHitting())
-        {
-            VerifyTarget();
-        }
-    }
-
-    private bool HasATargetBeenHitting()
-    {
         Ray ray = new Ray(transform.position, transform.forward);
         RaycastHit hit;
         if (Physics.Raycast(ray.origin, ray.direction, out hit, 25f))
         {
             target = hit.collider.gameObject;
-            return true;
+            VerifyTarget();
         }
-
-        return false;
     }
+
     private void VerifyTarget()
     {
         if (target.CompareTag("Enemy"))
