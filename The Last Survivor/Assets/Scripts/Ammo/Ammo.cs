@@ -10,6 +10,14 @@ public class Ammo : MonoBehaviour
         private set{ amount = value; }
     }
 
+    private void Update()
+    {
+        if (amount <= 0)
+        {
+            //ToDo
+        }
+    }
+
     public void Change(int value)
     {
         amount += value;
