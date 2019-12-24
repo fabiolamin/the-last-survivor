@@ -25,9 +25,9 @@ public class Health : MonoBehaviour
         }
     }
 
-    public void Change(float amount)
+    public void Change(float value)
     {
-        amount += amount;
+        amount += value;
     }
 
     public void Restart()
