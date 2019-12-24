@@ -3,36 +3,58 @@
 public class WeaponShoot : MonoBehaviour
 {
     private AttackDamage weaponAttackDamage;
+    private Ammo ammo;
+    private GameObject target;
 
     private void Awake()
     {
         weaponAttackDamage = GetComponent<AttackDamage>();
+        ammo = GetComponent<Ammo>();
     }
     private void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (ammo.Amount > 0)
+            {
+                Shoot();
+            }
+        }
+    }
+
+    private void Shoot()
+    {
+        ammo.Change(-1);
+
+        if (HasATargetBeenHitting())
+        {
+            VerifyTarget();
+        }
+    }
+
+    private bool HasATargetBeenHitting()
     {
         Ray ray = new Ray(transform.position, transform.forward);
         RaycastHit hit;
         if (Physics.Raycast(ray.origin, ray.direction, out hit, 25f))
         {
-            GameObject target = hit.collider.gameObject;
-            VerifyTarget(target);
+            target = hit.collider.gameObject;
+            return true;
         }
-    }
 
-    private void VerifyTarget(GameObject target)
+        return false;
+    }
+    private void VerifyTarget()
     {
         if (target.CompareTag("Enemy"))
         {
-            DamageEnemy(target);
+            DamageTarget();
         }
     }
 
-    private void DamageEnemy(GameObject enemy)
+    private void DamageTarget()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            Health enemyHealth = enemy.GetComponent<Health>();
-            enemyHealth.Change(-weaponAttackDamage.Value);
-        }
+        Health targetHealth = target.GetComponent<Health>();
+        targetHealth.Change(-weaponAttackDamage.Value);
     }
 }
