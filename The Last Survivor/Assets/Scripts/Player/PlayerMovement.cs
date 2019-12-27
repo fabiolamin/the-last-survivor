@@ -1,11 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    PlayerInput playerInput;
-    Rigidbody playerRigidbody;
+    private PlayerAnimation playerAnimation;
+    private Rigidbody playerRigidbody;
+    private Vector3 move;
     [SerializeField]
     private float speedMovement = 5f;
     [SerializeField]
@@ -13,8 +12,8 @@ public class PlayerMovement : MonoBehaviour
     
     private void Awake()
     {
-        playerInput = GetComponent<PlayerInput>();
         playerRigidbody = GetComponent<Rigidbody>();
+        playerAnimation = GetComponent<PlayerAnimation>();
     }
 
     private void FixedUpdate()
@@ -25,9 +24,10 @@ public class PlayerMovement : MonoBehaviour
 
     public void Move()
     {
-        Vector3 move = Vector3.zero;
-        move += playerInput.GetHorizontalAndVerticalKeys() * speedMovement;
+        float vertical = Input.GetAxis("Vertical");
+        move = transform.forward * vertical * speedMovement;
         playerRigidbody.MovePosition(playerRigidbody.position + move);
+        playerAnimation.AnimateMovement(vertical != 0);
     }
 
     public void Rotate()
