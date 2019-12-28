@@ -26,7 +26,7 @@ public class WeaponShoot : MonoBehaviour
     {
         ammo.Change(-1);
 
-        Ray ray = new Ray(transform.position, transform.forward);
+        Ray ray = new Ray(transform.position + (Vector3.up * 0.15f), -transform.right);
         RaycastHit hit;
         if (Physics.Raycast(ray.origin, ray.direction, out hit, 25f))
         {
