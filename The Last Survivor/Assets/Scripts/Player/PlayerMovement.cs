@@ -27,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
         float vertical = Input.GetAxis("Vertical");
         move = transform.forward * vertical * speedMovement;
         playerRigidbody.MovePosition(playerRigidbody.position + move);
-        playerAnimation.AnimateMovement(vertical);
+        playerAnimation.Move(vertical);
     }
 
     public void Rotate()

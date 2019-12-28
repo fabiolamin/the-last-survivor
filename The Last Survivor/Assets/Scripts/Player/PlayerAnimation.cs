@@ -8,7 +8,7 @@ public class PlayerAnimation : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    public void AnimateMovement(float value)
+    public void Move(float value)
     {
         animator.SetBool("IsIdle", value == 0);
         animator.SetFloat("Running", value);
