@@ -120,6 +120,7 @@ GameObject:
   - component: {fileID: 486830}
   - component: {fileID: 7290350391891765357}
   - component: {fileID: 2315934832757445902}
+  - component: {fileID: 1975456169697273921}
   m_Layer: 0
   m_Name: box_med
   m_TagString: Health
@@ -166,6 +167,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 80f40643c0a788d4080c604d613422ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1975456169697273921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 165310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86199b169f541ae4f915b981f7c57200, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &177648
