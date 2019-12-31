@@ -4,6 +4,8 @@ public class Health : MonoBehaviour
 {
     private float auxiliaryAmount;
     [SerializeField]
+    private ParticleSystem particle;
+    [SerializeField]
     private float amount = 100;
     public float Amount
     {
@@ -28,6 +30,7 @@ public class Health : MonoBehaviour
     public void Change(float value)
     {
         amount += value;
+        particle.Play();
     }
 
     public void Restart()
