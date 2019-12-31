@@ -23,6 +23,8 @@ public class WeaponShoot : MonoBehaviour
         {
             if (ammo.Amount > 0)
             {
+                audioSource.PlayOneShot(audioClips[0]);
+                particle.Play();
                 Shoot();
             }
 
@@ -32,8 +34,6 @@ public class WeaponShoot : MonoBehaviour
 
     private void Shoot()
     {
-        audioSource.PlayOneShot(audioClips[0]);
-        particle.Play();
         ammo.Change(-1);
 
         Ray ray = new Ray(transform.position + (Vector3.up * 0.15f), -transform.right);
