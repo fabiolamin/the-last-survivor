@@ -15,9 +15,12 @@ public class ItemCollider : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             itemSpawn.particle.Play();
+            itemSpawn.AudioSource.Play();
+
             player = other.gameObject;
             gameObject.SetActive(false);
             Verify(gameObject.tag);
+
             itemSpawn.IsActiveToSpawn = true;
         }
     }

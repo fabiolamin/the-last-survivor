@@ -835,6 +835,11 @@ PrefabInstance:
       propertyPath: InitialModule.size3D
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5817141674891375807, guid: f83512aa82d4f694bbd823c4a09719bd,
+        type: 3}
+      propertyPath: Loop
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f83512aa82d4f694bbd823c4a09719bd, type: 3}
 --- !u!1001 &8007422852291617406

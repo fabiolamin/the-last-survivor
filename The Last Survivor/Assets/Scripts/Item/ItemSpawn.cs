@@ -8,12 +8,14 @@ public class ItemSpawn : MonoBehaviour, ISpawnAction
     private float spawnInterval = 3f;
     public bool IsActiveToSpawn { get; set; }
     public ParticleSystem particle;
+    public AudioSource AudioSource { get; private set; }
 
     private void Awake()
     {
         auxiliaryTimer = spawnInterval;
         itemSpawnPool = GetComponent<Pool>();
         IsActiveToSpawn = true;
+        AudioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
