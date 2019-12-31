@@ -5,32 +5,41 @@ public class PlayerMovement : MonoBehaviour
     private PlayerAnimation playerAnimation;
     private Rigidbody playerRigidbody;
     private Vector3 move;
+    private AudioSource audioSource;
     [SerializeField]
     private float speedMovement = 5f;
     [SerializeField]
     private float speedRotation = 2f;
-    
+
     private void Awake()
     {
         playerRigidbody = GetComponent<Rigidbody>();
         playerAnimation = GetComponent<PlayerAnimation>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void FixedUpdate()
     {
-        Move();
+        if (Move())
+        {
+            if (!audioSource.isPlaying)
+            {
+                audioSource.Play();
+            }
+        }
         Rotate();
     }
 
-    public void Move()
+    private bool Move()
     {
         float vertical = Input.GetAxis("Vertical");
         move = transform.forward * vertical * speedMovement;
         playerRigidbody.MovePosition(playerRigidbody.position + move);
         playerAnimation.Move(vertical);
+        return vertical != 0;
     }
 
-    public void Rotate()
+    private void Rotate()
     {
         float horizontal = Input.GetAxis("Mouse X");
         Vector3 rotation = new Vector3(0, horizontal, 0) * speedRotation;
