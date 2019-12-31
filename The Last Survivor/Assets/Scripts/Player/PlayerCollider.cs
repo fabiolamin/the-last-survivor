@@ -6,6 +6,8 @@ public class PlayerCollider : MonoBehaviour
 {
     private Health playerHealth;
     private AttackDamage enemyAttackDamage;
+    [SerializeField]
+    private ParticleSystem particle;
 
     private void Awake()
     {
@@ -14,10 +16,11 @@ public class PlayerCollider : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.CompareTag("Enemy"))
+        if(collision.gameObject.CompareTag("EnemyHand"))
         {
             enemyAttackDamage = collision.gameObject.GetComponent<AttackDamage>();
             playerHealth.Change(- enemyAttackDamage.Value);
+            particle.Play();
         }
     }
 }
