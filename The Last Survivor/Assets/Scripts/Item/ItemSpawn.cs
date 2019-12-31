@@ -7,6 +7,7 @@ public class ItemSpawn : MonoBehaviour, ISpawnAction
     [SerializeField]
     private float spawnInterval = 3f;
     public bool IsActiveToSpawn { get; set; }
+    public ParticleSystem particle;
 
     private void Awake()
     {

@@ -14,6 +14,7 @@ public class ItemCollider : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            itemSpawn.particle.Play();
             player = other.gameObject;
             gameObject.SetActive(false);
             Verify(gameObject.tag);
