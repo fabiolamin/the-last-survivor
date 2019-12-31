@@ -5,6 +5,8 @@ public class WeaponShoot : MonoBehaviour
     private AttackDamage weaponAttackDamage;
     private Ammo ammo;
     private GameObject target;
+    [SerializeField]
+    private ParticleSystem particle;
 
     private void Awake()
     {
@@ -24,6 +26,7 @@ public class WeaponShoot : MonoBehaviour
 
     private void Shoot()
     {
+        particle.Play();
         ammo.Change(-1);
 
         Ray ray = new Ray(transform.position + (Vector3.up * 0.15f), -transform.right);
