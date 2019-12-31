@@ -5,13 +5,17 @@ public class WeaponShoot : MonoBehaviour
     private AttackDamage weaponAttackDamage;
     private Ammo ammo;
     private GameObject target;
+    private AudioSource audioSource;
     [SerializeField]
     private ParticleSystem particle;
+    [SerializeField]
+    private AudioClip[] audioClips;
 
     private void Awake()
     {
         weaponAttackDamage = GetComponent<AttackDamage>();
         ammo = GetComponent<Ammo>();
+        audioSource = GetComponent<AudioSource>();
     }
     private void Update()
     {
@@ -21,11 +25,14 @@ public class WeaponShoot : MonoBehaviour
             {
                 Shoot();
             }
+
+            audioSource.PlayOneShot(audioClips[1]);
         }
     }
 
     private void Shoot()
     {
+        audioSource.PlayOneShot(audioClips[0]);
         particle.Play();
         ammo.Change(-1);
 
