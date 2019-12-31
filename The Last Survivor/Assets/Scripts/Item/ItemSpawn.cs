@@ -7,7 +7,7 @@ public class ItemSpawn : MonoBehaviour, ISpawnAction
     [SerializeField]
     private float spawnInterval = 3f;
     public bool IsActiveToSpawn { get; set; }
-    public ParticleSystem particle;
+    public ParticleSystem Particle{ get; private set; }
     public AudioSource AudioSource { get; private set; }
 
     private void Awake()
@@ -16,6 +16,7 @@ public class ItemSpawn : MonoBehaviour, ISpawnAction
         itemSpawnPool = GetComponent<Pool>();
         IsActiveToSpawn = true;
         AudioSource = GetComponent<AudioSource>();
+        Particle = GetComponentInChildren<ParticleSystem>();
     }
 
     private void Update()
