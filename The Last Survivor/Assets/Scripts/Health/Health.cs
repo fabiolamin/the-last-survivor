@@ -9,9 +9,9 @@ public class Health : MonoBehaviour
     private float amount = 100;
     public float Amount
     {
-        get {return amount; }
+        get { return amount; }
 
-        private set { amount = value;}
+        private set { amount = value; }
     }
 
     private void Awake()
@@ -21,7 +21,7 @@ public class Health : MonoBehaviour
 
     private void Update()
     {
-        if(Amount <= 0)
+        if (Amount <= 0)
         {
             gameObject.SetActive(false);
         }
@@ -30,7 +30,10 @@ public class Health : MonoBehaviour
     public void Change(float value)
     {
         amount += value;
-        particle.Play();
+        if (value < 0)
+        {
+            particle.Play();
+        }
     }
 
     public void Restart()
