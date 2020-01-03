@@ -107,9 +107,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameObjectToInstantiate:
-  - {fileID: 2544495602095865916, guid: 06ffaf97cf60cf5419aac9659f41b705, type: 3}
-  - {fileID: 2544495602095865916, guid: e6ff76e65721cc44f9905ee7751e1a68, type: 3}
-  amountToInstantiate: 10
+  - {fileID: 3787425557666347213, guid: 9c1454d1bdc1b7540a9598e3817ac738, type: 3}
+  amountToInstantiate: 5
 --- !u!114 &766983301341845579
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,4 +121,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee44f58e9bfc7ca4bae14adbdaf72ac5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnInterval: 1
+  spawnInterval: 3
