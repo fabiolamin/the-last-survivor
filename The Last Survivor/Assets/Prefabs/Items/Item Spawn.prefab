@@ -109,8 +109,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameObjectToInstantiate:
-  - {fileID: 1215108279700861227, guid: d1a568418f66af34e929937688314b5e, type: 3}
-  - {fileID: 1557928915589843864, guid: 59d549f069577924680b185e85392f4a, type: 3}
+  - {fileID: 9126447108469822558, guid: 17460c0889f5fa64c81c25d9a3fdd4b3, type: 3}
+  - {fileID: 165310, guid: 4cdcc6c16809ba5439c8798d9bb925f4, type: 3}
   amountToInstantiate: 2
 --- !u!114 &2317639892880314107
 MonoBehaviour:
@@ -125,7 +125,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnInterval: 3
-  particle: {fileID: 1796003607751173298}
 --- !u!82 &5221926003333933635
 AudioSource:
   m_ObjectHideFlags: 0
@@ -282,12 +281,6 @@ PrefabInstance:
 --- !u!4 &1796003607737016818 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 979632a27455af442bd2d8f36eb0ffce,
-    type: 3}
-  m_PrefabInstance: {fileID: 1796003607736892274}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &1796003607751173298 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 19800000, guid: 979632a27455af442bd2d8f36eb0ffce,
     type: 3}
   m_PrefabInstance: {fileID: 1796003607736892274}
   m_PrefabAsset: {fileID: 0}
