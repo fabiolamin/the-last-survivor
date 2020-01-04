@@ -43,6 +43,10 @@ public class RoundManager : MonoBehaviour
     private void IncreaseRoundNumber()
     {
         RoundNumber++;
+        if(RoundNumber > PlayerPrefs.GetInt("highround"))
+        {
+            PlayerPrefs.SetInt("highround", RoundNumber);
+        }
     }
 
     private void IncreaseEnemyAttackDamage()
