@@ -3,7 +3,6 @@ using System.Linq;
 
 public class RoundManager : MonoBehaviour
 {
-    private int roundNumber;
     [SerializeField]
     private GameObject[] enemySpawns;
     [SerializeField]
@@ -13,9 +12,11 @@ public class RoundManager : MonoBehaviour
     [SerializeField]
     private float intervalToNextRound = 5f;
 
+    public int RoundNumber { get; private set; }
+
     private void Awake()
     {
-        roundNumber = 1;
+        RoundNumber = 1;
     }
 
     private void Update()
@@ -41,7 +42,7 @@ public class RoundManager : MonoBehaviour
 
     private void IncreaseRoundNumber()
     {
-        roundNumber++;
+        RoundNumber++;
     }
 
     private void IncreaseEnemyAttackDamage()
