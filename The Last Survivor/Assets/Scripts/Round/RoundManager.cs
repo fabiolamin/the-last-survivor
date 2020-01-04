@@ -51,7 +51,7 @@ public class RoundManager : MonoBehaviour
         {
             foreach (GameObject enemy in enemySpawn.GetComponent<Pool>().InstantiatedGameObjects)
             {
-                enemy.GetComponent<AttackDamage>().Change(amountEnemyAttackDamageToIncrease);
+                enemy.GetComponentInChildren<AttackDamage>().Change(amountEnemyAttackDamageToIncrease);
             }
         }
     }
