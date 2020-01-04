@@ -16,12 +16,12 @@ public class Health : MonoBehaviour
 
     private void Awake()
     {
-        auxiliaryAmount = Amount;
+        auxiliaryAmount = amount;
     }
 
     private void Update()
     {
-        if (Amount <= 0)
+        if (amount <= 0)
         {
             gameObject.SetActive(false);
         }
@@ -30,6 +30,8 @@ public class Health : MonoBehaviour
     public void Change(float value)
     {
         amount += value;
+        amount = Mathf.Clamp(amount, 0, auxiliaryAmount);
+
         if (value < 0)
         {
             particle.Play();
@@ -38,6 +40,6 @@ public class Health : MonoBehaviour
 
     public void Restart()
     {
-        Amount = auxiliaryAmount;
+        amount = auxiliaryAmount;
     }
 }
