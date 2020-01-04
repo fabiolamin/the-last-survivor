@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Linq;
 
-public class RoundManager : MonoBehaviour
+public class RoundController : MonoBehaviour
 {
     [SerializeField]
     private GameObject[] enemySpawns;
