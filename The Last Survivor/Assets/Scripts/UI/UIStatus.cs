@@ -3,7 +3,6 @@ using UnityEngine.UI;
 
 public class UIStatus : MonoBehaviour
 {
-    private UIButton UIButton;
     [SerializeField]
     private RoundController roundController;
     [SerializeField]
@@ -18,17 +17,13 @@ public class UIStatus : MonoBehaviour
     private Text ammoAmountText;
     [SerializeField]
     private GameObject pauseMenu;
-
-    private void Awake()
-    {
-        UIButton = GetComponent<UIButton>();
-    }
+    public bool IsScenePaused { get; set; }
 
     private void Update()
     {
         SetText();
 
-        pauseMenu.SetActive(UIButton.IsScenePaused);
+        pauseMenu.SetActive(IsScenePaused);
     }
 
     private void SetText()
