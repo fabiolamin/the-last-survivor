@@ -25,4 +25,29 @@ public class UIButton : MonoBehaviour
     {
         SceneManager.LoadScene(0);
     }
+
+    public void Play()
+    {
+        SceneManager.LoadScene(1);
+    }
+
+    public void ShowTutorial()
+    {
+        GetComponent<UIMenu>().EnableTutorial();
+    }
+
+    public void ShowCredits()
+    {
+        GetComponent<UIMenu>().EnableCredits();
+    }
+
+    public void ShowMenu()
+    {
+        GetComponent<UIMenu>().EnableMenu();
+    }
+
+    public void Exit()
+    {
+        Application.Quit();
+    }
 }
