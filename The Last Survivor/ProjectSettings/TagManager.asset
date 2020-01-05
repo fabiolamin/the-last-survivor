@@ -12,6 +12,7 @@ TagManager:
   - Ammo
   - FxTemporaire
   - EnemyHand
+  - Button
   layers:
   - Default
   - TransparentFX
