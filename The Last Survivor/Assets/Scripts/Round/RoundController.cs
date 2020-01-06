@@ -4,6 +4,8 @@ using System.Linq;
 public class RoundController : MonoBehaviour
 {
     [SerializeField]
+    private UIStatus UIStatus;
+    [SerializeField]
     private GameObject[] enemySpawns;
     [SerializeField]
     private Health playerHealth;
@@ -25,6 +27,16 @@ public class RoundController : MonoBehaviour
         {
             SetNextRound();
         }
+
+        if(IsPlayerDefeated())
+        {
+            UIStatus.IsGameOver = true;
+        }
+    }
+
+    private bool IsPlayerDefeated()
+    {
+        return playerHealth.Amount <= 0;
     }
 
     private bool AreAllEnemiesDefeated()

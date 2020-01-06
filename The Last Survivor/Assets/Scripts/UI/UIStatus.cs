@@ -10,26 +10,36 @@ public class UIStatus : MonoBehaviour
     [SerializeField]
     private Ammo ammo;
     [SerializeField]
-    private Text roundNumberText;
+    private Text roundNumber;
     [SerializeField]
-    private Text healthAmountText;
+    private Text healthAmount;
     [SerializeField]
-    private Text ammoAmountText;
+    private Text ammoAmount;
+    [SerializeField]
+    private GameObject defaultButtons;
+    [SerializeField]
+    private GameObject pauseButton;
     [SerializeField]
     private GameObject pauseMenu;
+    [SerializeField]
+    private GameObject gameOver;
     public bool IsScenePaused { get; set; }
+    public bool IsGameOver { get; set; }
 
     private void Update()
     {
-        SetText();
+        SetStatusText();
 
+        pauseButton.SetActive(!IsGameOver);
         pauseMenu.SetActive(IsScenePaused);
+        defaultButtons.SetActive(IsScenePaused || IsGameOver);
+        gameOver.SetActive(IsGameOver);
     }
 
-    private void SetText()
+    private void SetStatusText()
     {
-        roundNumberText.text = roundController.RoundNumber.ToString();
-        healthAmountText.text = health.Amount.ToString();
-        ammoAmountText.text = ammo.Amount.ToString();
+        roundNumber.text = roundController.RoundNumber.ToString();
+        healthAmount.text = health.Amount.ToString();
+        ammoAmount.text = ammo.Amount.ToString();
     }
 }
