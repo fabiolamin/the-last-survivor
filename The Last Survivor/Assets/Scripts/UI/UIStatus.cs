@@ -6,13 +6,15 @@ public class UIStatus : MonoBehaviour
     [SerializeField]
     private RoundController roundController;
     [SerializeField]
-    private Health health;
-    [SerializeField]
-    private Ammo ammo;
-    [SerializeField]
     private Text roundNumber;
     [SerializeField]
+    private GameObject status;
+    [SerializeField]
+    private Health health;
+    [SerializeField]
     private Text healthAmount;
+    [SerializeField]
+    private Ammo ammo;
     [SerializeField]
     private Text ammoAmount;
     [SerializeField]
@@ -29,11 +31,12 @@ public class UIStatus : MonoBehaviour
     private void Update()
     {
         SetStatusText();
+        ControlPause();
 
-        pauseButton.SetActive(!IsGameOver);
-        pauseMenu.SetActive(IsScenePaused);
-        defaultButtons.SetActive(IsScenePaused || IsGameOver);
-        gameOver.SetActive(IsGameOver);
+        if (IsGameOver)
+        {
+            SetGameOver();
+        }
     }
 
     private void SetStatusText()
@@ -41,5 +44,19 @@ public class UIStatus : MonoBehaviour
         roundNumber.text = roundController.RoundNumber.ToString();
         healthAmount.text = health.Amount.ToString();
         ammoAmount.text = ammo.Amount.ToString();
+    }
+
+    private void ControlPause()
+    {
+        pauseMenu.SetActive(IsScenePaused);
+        defaultButtons.SetActive(IsScenePaused);
+    }
+
+    private void SetGameOver()
+    {
+        gameOver.SetActive(true);
+        pauseButton.SetActive(false);
+        defaultButtons.SetActive(true);
+        status.SetActive(false);
     }
 }
