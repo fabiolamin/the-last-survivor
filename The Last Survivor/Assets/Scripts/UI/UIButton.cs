@@ -3,6 +3,8 @@ using UnityEngine.SceneManagement;
 
 public class UIButton : MonoBehaviour
 {
+    [SerializeField]
+    private Animator fade;
     public void Pause()
     {
         Time.timeScale = 0;
@@ -24,11 +26,13 @@ public class UIButton : MonoBehaviour
     public void GoMenu()
     {
         Time.timeScale = 1;
+        fade.SetTrigger("FadeOut");
         SceneManager.LoadScene(0);
     }
 
     public void Play()
     {
+        fade.SetTrigger("FadeOut");
         SceneManager.LoadScene(1);
     }
 
