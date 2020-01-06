@@ -1351,7 +1351,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u2023 W and D to move\n\u2023 Mouse to control the aim\n\u2023 Left mouse
+  m_Text: "\u2023 W and S to move\n\u2023 Mouse to control the aim\n\u2023 Left mouse
     button to shoot"
 --- !u!222 &437714574
 CanvasRenderer:
