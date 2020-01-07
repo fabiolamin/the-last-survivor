@@ -10,6 +10,11 @@ public class Pool : MonoBehaviour
     [SerializeField]
     private int amountToInstantiate = 10;
     public GameObject[] InstantiatedGameObjects { get; private set; }
+    public int AmountToInstantiate 
+    {
+        get{ return amountToInstantiate; }
+        private set { amountToInstantiate = value; }
+    }
 
     private void Awake()
     {

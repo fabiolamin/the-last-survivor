@@ -25,7 +25,7 @@ public class EnemySpawn : MonoBehaviour, ISpawnAction
         Pool = GetComponent<Pool>();
         IsReadyToSpawn = true;
         position = 0;
-        EnemiesAmount = Pool.InstantiatedGameObjects.Length;
+        EnemiesAmount = Pool.AmountToInstantiate;
     }
     private void Update()
     {
