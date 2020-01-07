@@ -30,10 +30,10 @@ public class ItemCollider : MonoBehaviour
         switch (tag)
         {
             case "Health":
-                player.GetComponent<Health>().Change(10);
+                player.GetComponent<Health>().Change(15);
                 break;
             case "Ammo":
-                player.GetComponentInChildren<Ammo>().Change(5);
+                player.GetComponentInChildren<Ammo>().Change(25);
                 break;
         }
     }

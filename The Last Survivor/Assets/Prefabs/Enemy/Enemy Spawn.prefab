@@ -108,7 +108,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameObjectToInstantiate:
   - {fileID: 3787425557666347213, guid: 9c1454d1bdc1b7540a9598e3817ac738, type: 3}
-  amountToInstantiate: 1
+  amountToInstantiate: 4
 --- !u!114 &766983301341845579
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121,5 +121,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee44f58e9bfc7ca4bae14adbdaf72ac5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amountEnemyAttackDamageToIncrease: 5
+  amountAttackDamageToIncrease: 2
   spawnInterval: 3
