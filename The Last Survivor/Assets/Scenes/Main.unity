@@ -5614,6 +5614,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy Spawn (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 766983301341845572, guid: 0a99692694800654e808b6ec3f2a898c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 766983301341845583, guid: 0a99692694800654e808b6ec3f2a898c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8313,6 +8318,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Enemy Spawn
+      objectReference: {fileID: 0}
+    - target: {fileID: 766983301341845572, guid: 0a99692694800654e808b6ec3f2a898c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 766983301341845583, guid: 0a99692694800654e808b6ec3f2a898c,
         type: 3}

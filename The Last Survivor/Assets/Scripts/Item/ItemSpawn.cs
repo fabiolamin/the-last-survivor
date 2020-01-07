@@ -2,8 +2,9 @@
 
 public class ItemSpawn : MonoBehaviour, ISpawnAction
 {
+    private int count;
     private float auxiliaryTimer;
-    private Pool itemSpawnPool;
+    private Pool Pool;
     [SerializeField]
     private float spawnInterval = 3f;
     public bool IsActiveToSpawn { get; set; }
@@ -12,8 +13,9 @@ public class ItemSpawn : MonoBehaviour, ISpawnAction
 
     private void Awake()
     {
+        count = 0;
         auxiliaryTimer = spawnInterval;
-        itemSpawnPool = GetComponent<Pool>();
+        Pool = GetComponent<Pool>();
         IsActiveToSpawn = true;
         AudioSource = GetComponent<AudioSource>();
         Particle = GetComponentInChildren<ParticleSystem>();
@@ -44,8 +46,9 @@ public class ItemSpawn : MonoBehaviour, ISpawnAction
 
     public void Spawn()
     {
-        int random = Random.Range(0, itemSpawnPool.InstantiatedGameObjects.Length);
-        itemSpawnPool.EnableGameObject(random);
+        int position = count % Pool.InstantiatedGameObjects.Length;
+        Pool.EnableGameObject(position);
         IsActiveToSpawn = false;
+        count++;
     }
 }
