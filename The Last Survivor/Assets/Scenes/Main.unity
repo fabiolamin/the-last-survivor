@@ -1855,24 +1855,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8007422852810299364, guid: 1143ddb41a5634a48bb2b101aae49e89,
         type: 3}
+      propertyPath: UIStatus
+      value: 
+      objectReference: {fileID: 1674934680}
+    - target: {fileID: 8007422852810299364, guid: 1143ddb41a5634a48bb2b101aae49e89,
+        type: 3}
       propertyPath: enemySpawns.Array.data[0]
       value: 
-      objectReference: {fileID: 776465178}
+      objectReference: {fileID: 1408476227}
     - target: {fileID: 8007422852810299364, guid: 1143ddb41a5634a48bb2b101aae49e89,
         type: 3}
       propertyPath: enemySpawns.Array.data[1]
       value: 
-      objectReference: {fileID: 1408476226}
+      objectReference: {fileID: 776465179}
     - target: {fileID: 8007422852810299364, guid: 1143ddb41a5634a48bb2b101aae49e89,
         type: 3}
       propertyPath: playerHealth
       value: 
       objectReference: {fileID: 1348407860}
-    - target: {fileID: 8007422852810299364, guid: 1143ddb41a5634a48bb2b101aae49e89,
-        type: 3}
-      propertyPath: UIStatus
-      value: 
-      objectReference: {fileID: 1674934680}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1143ddb41a5634a48bb2b101aae49e89, type: 3}
 --- !u!1001 &373556395
@@ -3580,12 +3580,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 124067790}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &776465178 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 766983301341845572, guid: 0a99692694800654e808b6ec3f2a898c,
+--- !u!114 &776465179 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 766983301341845579, guid: 0a99692694800654e808b6ec3f2a898c,
     type: 3}
   m_PrefabInstance: {fileID: 1302884125}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee44f58e9bfc7ca4bae14adbdaf72ac5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &797681522
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6179,12 +6185,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 297dfcc42826f8145b02724d1d95810a, type: 3}
---- !u!1 &1408476226 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 766983301341845572, guid: 0a99692694800654e808b6ec3f2a898c,
+--- !u!114 &1408476227 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 766983301341845579, guid: 0a99692694800654e808b6ec3f2a898c,
     type: 3}
   m_PrefabInstance: {fileID: 1978496085}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee44f58e9bfc7ca4bae14adbdaf72ac5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1427630260
 GameObject:
   m_ObjectHideFlags: 0
@@ -7194,7 +7206,7 @@ GameObject:
   - component: {fileID: 1674934682}
   m_Layer: 0
   m_Name: UI Controller
-  m_TagString: Untagged
+  m_TagString: UIController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8312,11 +8324,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy Spawn
       objectReference: {fileID: 0}
-    - target: {fileID: 766983301341845572, guid: 0a99692694800654e808b6ec3f2a898c,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 766983301341845583, guid: 0a99692694800654e808b6ec3f2a898c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8371,11 +8378,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 766983301341845582, guid: 0a99692694800654e808b6ec3f2a898c,
-        type: 3}
-      propertyPath: amountToInstantiate
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a99692694800654e808b6ec3f2a898c, type: 3}

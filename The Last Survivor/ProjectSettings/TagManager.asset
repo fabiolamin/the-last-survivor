@@ -13,6 +13,8 @@ TagManager:
   - FxTemporaire
   - EnemyHand
   - Button
+  - UIController
+  - RoundController
   layers:
   - Default
   - TransparentFX

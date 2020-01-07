@@ -26,17 +26,22 @@ public class UIStatus : MonoBehaviour
     [SerializeField]
     private GameObject gameOver;
     public bool IsScenePaused { get; set; }
-    public bool IsGameOver { get; set; }
+    public bool HasChanged { get; set; }
+
+    private void Awake()
+    {
+        HasChanged = true;
+    }
 
     private void Update()
     {
-        SetStatusText();
-        ControlPause();
-
-        if (IsGameOver)
+        if (HasChanged)
         {
-            SetGameOver();
+            SetStatusText();
+            HasChanged = false;
         }
+
+        ControlPause();
     }
 
     private void SetStatusText()
@@ -52,7 +57,7 @@ public class UIStatus : MonoBehaviour
         defaultButtons.SetActive(IsScenePaused);
     }
 
-    private void SetGameOver()
+    public void SetGameOver()
     {
         gameOver.SetActive(true);
         pauseButton.SetActive(false);

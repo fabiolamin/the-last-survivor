@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8007422852810299364}
   m_Layer: 0
   m_Name: Round Controller
-  m_TagString: Untagged
+  m_TagString: RoundController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -43,9 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3d1d65917a94d048bcedce79b6785aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UIStatus: {fileID: 0}
   enemySpawns:
   - {fileID: 0}
   - {fileID: 0}
   playerHealth: {fileID: 0}
-  amountEnemyAttackDamageToIncrease: 5
   intervalToNextRound: 5

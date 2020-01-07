@@ -5,7 +5,8 @@ public class EnemySpawn : MonoBehaviour, ISpawnAction
 {
     private int position;
     private float auxiliaryTimer;
-    private Pool enemySpawnPool;
+    [SerializeField]
+    float amountAttackDamageToIncrease;
     [SerializeField]
     private float spawnInterval = 1f;
     public bool IsReadyToSpawn { get; set; }
@@ -15,12 +16,16 @@ public class EnemySpawn : MonoBehaviour, ISpawnAction
         set { spawnInterval = value; }
     }
 
+    public Pool Pool { get; private set; }
+    public int EnemiesAmount { get; private set; }
+
     private void Awake()
     {
         auxiliaryTimer = spawnInterval;
-        enemySpawnPool = GetComponent<Pool>();
+        Pool = GetComponent<Pool>();
         IsReadyToSpawn = true;
         position = 0;
+        EnemiesAmount = Pool.InstantiatedGameObjects.Length;
     }
     private void Update()
     {
@@ -32,11 +37,11 @@ public class EnemySpawn : MonoBehaviour, ISpawnAction
 
     public void Spawn()
     {
-        if (position < enemySpawnPool.InstantiatedGameObjects.Length)
+        if (position < Pool.InstantiatedGameObjects.Length)
         {
             if (HasSpawnIntervalDone())
             {
-                enemySpawnPool.EnableGameObject(position);
+                Pool.EnableGameObject(position);
                 position++;
             }
         }
@@ -59,9 +64,25 @@ public class EnemySpawn : MonoBehaviour, ISpawnAction
         return false;
     }
 
+    public void IncreaseAttackDamage()
+    {
+        foreach (GameObject enemy in Pool.InstantiatedGameObjects)
+        {
+            enemy.GetComponentInChildren<AttackDamage>().Change(amountAttackDamageToIncrease);
+        }
+    }
+
+    public void RestartHealth()
+    {
+        foreach (GameObject enemy in Pool.InstantiatedGameObjects)
+        {
+            enemy.GetComponent<Health>().Restart();
+        }
+    }
+
     public void Restart()
     {
         IsReadyToSpawn = true;
-        enemySpawnPool.RecycleAllGameObjects();
+        Pool.RecycleAllGameObjects();
     }
 }
