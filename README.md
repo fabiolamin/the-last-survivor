@@ -1,2 +1,1 @@
-# the-last-survivor
-The Last Survivor is an arcade game made by me in Unity.
+Available to play: https://fabiolamin.itch.io/the-last-survivor
