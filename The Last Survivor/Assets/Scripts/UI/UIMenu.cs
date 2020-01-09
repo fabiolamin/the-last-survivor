@@ -16,6 +16,11 @@ public class UIMenu : MonoBehaviour
 
     private void Awake()
     {
+        if(PlayerPrefs.GetInt("highround") == 0)
+        {
+            PlayerPrefs.SetInt("highround", 1);
+        }
+
         ShowHighRound();
     }
 
